@@ -1,0 +1,54 @@
+/* Tokens de la Identidad Visual. Las pantallas usan estas variables, nunca valores sueltos. */
+:root {
+  /* Marca y base */
+  --color-primario: #1e3a8a;
+  --color-secundario: #334155;
+  --color-fondo: #f8fafc;
+  --color-superficie: #ffffff;
+
+  /* Controles */
+  --color-boton-principal: #2563eb;
+  --color-boton-principal-hover: #1d4ed8;
+  --color-boton-secundario: #e2e8f0;
+  --color-boton-secundario-hover: #cbd5e1;
+  --color-boton-destructivo: #dc2626;
+  --color-boton-destructivo-hover: #b91c1c;
+
+  /* Alertas y estados */
+  --color-advertencia: #f59e0b;
+  --color-error: #ef4444;
+  --color-informacion: #dbeafe;
+  --color-exito: #10b981;
+
+  /* Derivados neutros */
+  --color-texto-suave: #64748b;
+  --color-borde: #cbd5e1;
+  --color-borde-suave: #e2e8f0;
+  --color-encabezado-tabla: #f1f5f9;
+  --color-velo: rgb(15 23 42 / 55%);
+  --color-texto-error: #b91c1c;
+
+  /* Tipografía */
+  --fuente-ui: 'Inter Variable', Inter, Roboto, system-ui, sans-serif;
+  --fuente-mono: 'Roboto Mono', ui-monospace, monospace;
+  --texto-titulo: 24px;
+  --texto-seccion: 18px;
+  --texto-base: 14px;
+  --texto-etiqueta: 12px;
+  --texto-dato: 16px;
+
+  /* Espacios y formas */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 12px;
+  --espacio-4: 16px;
+  --espacio-5: 24px;
+  --espacio-6: 32px;
+  --radio: 8px;
+  --radio-grande: 12px;
+  --sombra: 0 8px 24px rgb(15 23 42 / 14%);
+
+  /* Layout */
+  --alto-barra: 56px;
+  --ancho-menu: 200px;
+}
