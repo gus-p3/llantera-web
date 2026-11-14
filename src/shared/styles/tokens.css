@@ -25,14 +25,23 @@
   --color-borde: #cbd5e1;
   --color-borde-suave: #e2e8f0;
   --color-encabezado-tabla: #f1f5f9;
-  --color-velo: rgb(15 23 42 / 55%);
+  --color-velo: rgb(15 23 42 / 45%);
   --color-texto-error: #b91c1c;
+
+  /* Derivados de la paleta para superficies suaves (mezclas, no colores nuevos) */
+  --color-primario-oscuro: color-mix(in srgb, var(--color-primario) 82%, #000);
+  --color-informacion-suave: color-mix(in srgb, var(--color-informacion) 45%, var(--color-superficie));
+  --color-advertencia-suave: color-mix(in srgb, var(--color-advertencia) 14%, var(--color-superficie));
+  --color-advertencia-tinta: color-mix(in srgb, var(--color-advertencia) 70%, #000);
+  --color-exito-suave: color-mix(in srgb, var(--color-exito) 13%, var(--color-superficie));
+  --color-exito-tinta: color-mix(in srgb, var(--color-exito) 62%, #000);
+  --color-error-suave: color-mix(in srgb, var(--color-error) 10%, var(--color-superficie));
 
   /* Tipografía */
   --fuente-ui: 'Inter Variable', Inter, Roboto, system-ui, sans-serif;
   --fuente-mono: 'Roboto Mono', ui-monospace, monospace;
-  --texto-titulo: 24px;
-  --texto-seccion: 18px;
+  --texto-titulo: 26px;
+  --texto-seccion: 16px;
   --texto-base: 14px;
   --texto-etiqueta: 12px;
   --texto-dato: 16px;
@@ -44,11 +53,23 @@
   --espacio-4: 16px;
   --espacio-5: 24px;
   --espacio-6: 32px;
-  --radio: 8px;
-  --radio-grande: 12px;
-  --sombra: 0 8px 24px rgb(15 23 42 / 14%);
+  --espacio-7: 48px;
+  --radio: 10px;
+  --radio-grande: 14px;
+
+  /* Profundidad: sombras en capas, suaves y con tinte pizarra */
+  --sombra-1: 0 1px 2px rgb(15 23 42 / 5%), 0 1px 3px rgb(15 23 42 / 4%);
+  --sombra-2: 0 2px 4px -1px rgb(15 23 42 / 5%), 0 8px 20px -6px rgb(15 23 42 / 10%);
+  --sombra: 0 4px 8px -2px rgb(15 23 42 / 6%), 0 24px 48px -12px rgb(15 23 42 / 22%);
+  --sombra-boton: 0 1px 2px rgb(30 58 138 / 22%), inset 0 1px 0 rgb(255 255 255 / 14%);
+  --anillo-foco: 0 0 0 3px color-mix(in srgb, var(--color-boton-principal) 24%, transparent);
+
+  /* Movimiento */
+  --curva: cubic-bezier(0.16, 1, 0.3, 1);
+  --transicion: 180ms var(--curva);
+  --duracion-entrada: 420ms;
 
   /* Layout */
-  --alto-barra: 56px;
-  --ancho-menu: 200px;
+  --alto-barra: 60px;
+  --ancho-menu: 248px;
 }
