@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react'
 import { useMemo } from 'react'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { useRecurso, useValorRetrasado } from '../../shared/api/useRecurso'
@@ -91,7 +92,8 @@ export function PedidosPage() {
         titulo="Pedidos"
         acciones={
           <Boton variante="principal" onClick={() => navegar('/pedidos/nuevo')}>
-            + Nuevo pedido
+            <Plus size={16} aria-hidden="true" />
+            Nuevo pedido
           </Boton>
         }
       />

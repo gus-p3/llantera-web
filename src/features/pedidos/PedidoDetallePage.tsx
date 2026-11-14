@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
 import { useState, type ReactNode } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useRecurso } from '../../shared/api/useRecurso'
@@ -130,7 +130,9 @@ export function PedidoDetallePage() {
           <section className="tarjeta pila">
             <div className="fila-seccion">
               <h2 className="titulo-seccion">Cliente</h2>
-              <Link to={`/clientes/${pedido.cliente.id}`}>Ver cliente ›</Link>
+              <Link to={`/clientes/${pedido.cliente.id}`} className="enlace-flecha">
+                Ver cliente <ArrowRight size={14} aria-hidden="true" />
+              </Link>
             </div>
             <div className="dato-valor">{nombreCompleto(pedido.cliente)}</div>
             <p className="texto-suave">Tel. {formatoTelefono(pedido.cliente.telefono)}</p>
@@ -138,7 +140,9 @@ export function PedidoDetallePage() {
           <section className="tarjeta pila">
             <div className="fila-seccion">
               <h2 className="titulo-seccion">Vehículo</h2>
-              <Link to={`/vehiculos/${pedido.vehiculo.id}`}>Ver vehículo ›</Link>
+              <Link to={`/vehiculos/${pedido.vehiculo.id}`} className="enlace-flecha">
+                Ver vehículo <ArrowRight size={14} aria-hidden="true" />
+              </Link>
             </div>
             <div className="dato-valor">
               {pedido.vehiculo.marca} {pedido.vehiculo.modelo} {pedido.vehiculo.anio ?? ''}

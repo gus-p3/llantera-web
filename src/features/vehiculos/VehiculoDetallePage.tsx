@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useRecurso } from '../../shared/api/useRecurso'
@@ -62,7 +63,9 @@ export function VehiculoDetallePage() {
         <section className="tarjeta pila">
           <div className="fila-seccion">
             <h2 className="titulo-seccion">Dueño del vehículo</h2>
-            <Link to={`/clientes/${vehiculo.dueno.id}`}>Ver cliente ›</Link>
+            <Link to={`/clientes/${vehiculo.dueno.id}`} className="enlace-flecha">
+              Ver cliente <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
           <div className="dato-valor">{nombreCompleto(vehiculo.dueno)}</div>
           <p className="texto-suave">Tel. {formatoTelefono(vehiculo.dueno.telefono)}</p>

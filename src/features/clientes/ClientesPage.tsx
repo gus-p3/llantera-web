@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRecurso, useValorRetrasado } from '../../shared/api/useRecurso'
@@ -77,7 +78,8 @@ export function ClientesPage() {
         titulo="Clientes"
         acciones={
           <Boton variante="principal" onClick={() => setCreando(true)}>
-            + Nuevo cliente
+            <Plus size={16} aria-hidden="true" />
+            Nuevo cliente
           </Boton>
         }
       />

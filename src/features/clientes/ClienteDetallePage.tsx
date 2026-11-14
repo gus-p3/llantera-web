@@ -1,3 +1,4 @@
+import { ArrowRight, Plus } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useRecurso } from '../../shared/api/useRecurso'
@@ -100,7 +101,10 @@ export function ClienteDetallePage() {
 
       <div className="fila-seccion">
         <h2 className="titulo-seccion">Vehículos del cliente</h2>
-        <Boton onClick={() => setAgregandoVehiculo(true)}>+ Agregar vehículo</Boton>
+        <Boton onClick={() => setAgregandoVehiculo(true)}>
+          <Plus size={16} aria-hidden="true" />
+          Agregar vehículo
+        </Boton>
       </div>
       {cliente.listaVehiculos.length === 0 ? (
         <Vacio>Este cliente aún no tiene vehículos.</Vacio>
@@ -117,7 +121,9 @@ export function ClienteDetallePage() {
               {vehiculo.color && <p className="texto-suave">{vehiculo.color}</p>}
               <div className="fila-seccion">
                 <span className="chip-placa">{formatoPlaca(vehiculo.placas)}</span>
-                <Link to={`/vehiculos/${vehiculo.id}`}>Ver detalle ›</Link>
+                <Link to={`/vehiculos/${vehiculo.id}`} className="enlace-flecha">
+                  Ver detalle <ArrowRight size={14} aria-hidden="true" />
+                </Link>
               </div>
             </article>
           ))}

@@ -1,4 +1,4 @@
-import { X } from 'lucide-react'
+import { Plus, X } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import type { ErrorHttp, ErroresDeCampo } from '../../shared/api/http'
@@ -226,7 +226,10 @@ export function NuevoPedidoPage({ pedido }: { pedido?: PedidoDetalle }) {
                 />
                 <div className="fila-controles">
                   <span className="texto-suave">¿El cliente no aparece?</span>
-                  <Boton onClick={() => setVentana('cliente')}>+ Agregar cliente nuevo</Boton>
+                  <Boton onClick={() => setVentana('cliente')}>
+                    <Plus size={16} aria-hidden="true" />
+                    Agregar cliente nuevo
+                  </Boton>
                 </div>
               </>
             )}
@@ -253,7 +256,8 @@ export function NuevoPedidoPage({ pedido }: { pedido?: PedidoDetalle }) {
                   className="tarjeta-opcion tarjeta-opcion-agregar"
                   onClick={() => setVentana('vehiculo')}
                 >
-                  + Agregar vehículo
+                  <Plus size={16} aria-hidden="true" />
+                  Agregar vehículo
                 </button>
               </div>
             ) : (
