@@ -1,3 +1,4 @@
+import { AlarmClock, ArrowRight, ArrowUpRight, CircleCheck, ClipboardList, TriangleAlert } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useRecurso } from '../../shared/api/useRecurso'
 import { Banner } from '../../shared/ui/Banner'
@@ -6,6 +7,7 @@ import { Cargando, Vacio } from '../../shared/ui/Estados'
 import { EtiquetaAlerta, EtiquetaEstado } from '../../shared/ui/Etiquetas'
 import { fechaCorta, fechaLarga, formatoNota, formatoPlaca, hoyIso, nombreCompleto } from '../../shared/util/formato'
 import { BotonAvisoWhatsApp } from '../whatsapp/BotonAvisoWhatsApp'
+import { CifraAnimada } from './CifraAnimada'
 import {
   listarListosParaRecoger,
   listarProximasEntregas,
@@ -54,20 +56,28 @@ export function InicioPage() {
 
   const { resumen, proximas, listos } = datos
   const tarjetas = [
-    { texto: 'Pedidos activos', valor: resumen.pedidosActivos, ruta: '/pedidos', clase: '' },
+    { texto: 'Pedidos activos', valor: resumen.pedidosActivos, ruta: '/pedidos', clase: '', icono: ClipboardList },
     {
       texto: 'Entregas próximas',
       valor: resumen.entregasProximas,
       ruta: '/pedidos?alerta=ENTREGA_PROXIMA',
       clase: 'resumen-advertencia',
+      icono: AlarmClock,
     },
     {
       texto: 'Listos para recoger',
       valor: resumen.listosParaRecoger,
       ruta: '/pedidos?alerta=DEBE_RECOGER',
       clase: 'resumen-exito',
+      icono: CircleCheck,
     },
-    { texto: 'Retrasados', valor: resumen.retrasados, ruta: '/pedidos?alerta=RETRASADO', clase: 'resumen-error' },
+    {
+      texto: 'Retrasados',
+      valor: resumen.retrasados,
+      ruta: '/pedidos?alerta=RETRASADO',
+      clase: 'resumen-error',
+      icono: TriangleAlert,
+    },
   ]
 
   return (
@@ -75,10 +85,16 @@ export function InicioPage() {
       <Encabezado titulo="Inicio" subtitulo={`Hoy, ${fechaLarga(hoyIso())}`} />
 
       <div className="rejilla-4">
-        {tarjetas.map((tarjeta) => (
-          <Link key={tarjeta.texto} to={tarjeta.ruta} className={`tarjeta resumen ${tarjeta.clase}`}>
-            <span className="resumen-valor">{tarjeta.valor}</span>
-            <span>{tarjeta.texto}</span>
+        {tarjetas.map(({ texto, valor, ruta, clase, icono: Icono }) => (
+          <Link key={texto} to={ruta} className={`tarjeta resumen ${clase}`}>
+            <span className="resumen-cabeza">
+              <span className="resumen-icono" aria-hidden="true">
+                <Icono size={18} />
+              </span>
+              <ArrowUpRight size={16} className="resumen-ir" aria-hidden="true" />
+            </span>
+            <CifraAnimada valor={valor} className="resumen-valor" />
+            <span className="resumen-texto">{texto}</span>
           </Link>
         ))}
       </div>
@@ -87,7 +103,9 @@ export function InicioPage() {
         <section className="tarjeta pila">
           <div className="fila-seccion">
             <h2 className="titulo-seccion">Próximas entregas</h2>
-            <Link to="/pedidos">Ver todos ›</Link>
+            <Link to="/pedidos" className="enlace-flecha">
+              Ver todos <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
           {proximas.length === 0 ? (
             <Vacio>No hay pedidos en curso.</Vacio>
@@ -115,7 +133,9 @@ export function InicioPage() {
         <section className="tarjeta pila">
           <div className="fila-seccion">
             <h2 className="titulo-seccion">Listos para recoger</h2>
-            <Link to="/pedidos?alerta=DEBE_RECOGER">Ver todos ›</Link>
+            <Link to="/pedidos?alerta=DEBE_RECOGER" className="enlace-flecha">
+              Ver todos <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
           {listos.length === 0 ? (
             <Vacio>No hay vehículos esperando a su dueño.</Vacio>

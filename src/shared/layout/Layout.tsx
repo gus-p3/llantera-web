@@ -1,5 +1,5 @@
-import { Car, FileText, Home, LogOut, Megaphone, User, type LucideIcon } from 'lucide-react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { Car, FileText, Home, LogOut, Megaphone, User, Wrench, type LucideIcon } from 'lucide-react'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useSesion } from '../auth/sesion'
 import './Layout.css'
 
@@ -21,14 +21,26 @@ const ETIQUETA_ROL = { ADMIN: 'Administrador', SECRETARIA: 'Secretaría' }
 
 export function Layout() {
   const { usuario, cerrarSesion } = useSesion()
+  const { pathname } = useLocation()
   if (!usuario) return null
 
   return (
     <div className="layout">
       <header className="layout-barra">
-        <span className="layout-marca">Taller y Llantera del Bosque</span>
+        <div className="layout-marca">
+          <span className="layout-sello" aria-hidden="true">
+            <Wrench size={18} strokeWidth={2.25} />
+          </span>
+          <span className="layout-marca-texto">
+            <span className="layout-marca-nombre">Taller y Llantera</span>
+            <span className="layout-marca-lugar">del Bosque</span>
+          </span>
+        </div>
         <div className="layout-usuario">
-          <span>{ETIQUETA_ROL[usuario.rol]}</span>
+          <span className="layout-usuario-datos">
+            <span className="layout-usuario-nombre">{usuario.nombre}</span>
+            <span className="layout-usuario-rol">{ETIQUETA_ROL[usuario.rol]}</span>
+          </span>
           <span className="layout-avatar" aria-hidden="true">
             {usuario.nombre.charAt(0).toUpperCase()}
           </span>
@@ -40,16 +52,20 @@ export function Layout() {
       </header>
 
       <nav className="layout-menu" aria-label="Menú principal">
+        <span className="layout-menu-titulo">Operación</span>
         {SECCIONES.map(({ ruta, etiqueta, icono: Icono }) => (
           <NavLink key={ruta} to={ruta} end={ruta === '/'} className="layout-enlace">
-            <Icono size={20} aria-hidden="true" />
+            <Icono size={18} aria-hidden="true" />
             {etiqueta}
           </NavLink>
         ))}
       </nav>
 
       <main className="layout-contenido">
-        <Outlet />
+        {/* La clave reinicia la animación de entrada en cada cambio de pantalla. */}
+        <div key={pathname} className="layout-transicion">
+          <Outlet />
+        </div>
       </main>
     </div>
   )
