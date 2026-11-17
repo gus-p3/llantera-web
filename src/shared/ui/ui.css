@@ -1375,3 +1375,30 @@ a.boton:hover {
 .pila > .chip-placa {
   align-self: flex-start;
 }
+
+/* En columnas angostas los botones y enlaces no deben desbordar la tarjeta */
+.rejilla-2 > *,
+.rejilla-3 > *,
+.rejilla-4 > * {
+  min-width: 0;
+}
+
+.inicio-lista .boton {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+.enlace-flecha {
+  white-space: nowrap;
+}
+
+.inicio-lista-lado {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+  .rejilla-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
